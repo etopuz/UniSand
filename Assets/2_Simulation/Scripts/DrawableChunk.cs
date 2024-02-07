@@ -1,6 +1,15 @@
 using System;
 using UnityEngine;
 
+// TODO: Separate Rendering And Cell System
+// TODO: Add continuous drawing support for mouse drag
+// TODO: Create Cellular Automata Logic For Simulation
+// TODO: Add more detailed classes for Pixel(like Sand, Water, etc.) and Pens(like Brush, Eraser, etc., they may have size). And separate them from DrawableChunk
+// TODO: Add UI buttons for drawing on canvas (choose pixels, pens, or other functional things such as simulation start, pause, etc.)
+// TODO: Add pause and resume support for simulation
+// TODO: Add multiple chunk support for bigger simulations
+// TODO: Add multithreading support for multiple chunks
+
 namespace UniSand
 {
     [RequireComponent(typeof(SpriteRenderer))]
@@ -8,13 +17,13 @@ namespace UniSand
     {
         [SerializeField] private int size = 16;
         
-        // TODO: needs to be removed on refactoring
-        [SerializeField] private Pixel[] pixelTypes;
+        
+        [SerializeField] private Pixel[] pixelTypes; // TODO: needs to be removed on refactoring
         
         // References
         private Camera _mainCamera;
-        private Sprite _drawableSprite;
-        private Texture2D _drawableTexture;
+        private Sprite _drawableSprite; // TODO: needs to be removed on refactoring
+        private Texture2D _drawableTexture; // TODO: needs to be removed on refactoring
         
         // GridData
         private Pixel[,] _cellularGrid;
@@ -93,6 +102,7 @@ namespace UniSand
 }
 
 [Serializable]
+// TODO: needs to be removed on refactoring
 public struct Pixel
 {
     public bool isSand;
