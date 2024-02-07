@@ -86,8 +86,8 @@ namespace UniSand
             if (mouseHeldDown)
             {
                 var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                var x = (int) ((mousePos.x + (size*_cellScale)/2) / _cellScale);
-                var y = (int) ((mousePos.y + (size*_cellScale)/2) / _cellScale);
+                var x = (int) ((mousePos.x + 0.5f) / _cellScale);
+                var y = (int) ((mousePos.y + 0.5f) / _cellScale);
                 x = Mathf.Clamp(x, 0, size - 1);
                 y = Mathf.Clamp(y, 0, size - 1);
                 _cellularGrid[x, y] = pixelTypes[1];
