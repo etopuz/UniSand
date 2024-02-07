@@ -36,7 +36,20 @@ namespace UniSand
             var randomY = UnityEngine.Random.Range(0, height);
             _cellularGrid[randomX, randomY] = PixelTypes[1];
         }
-        
+
+        private void Update()
+        {
+            if (Input.GetMouseButton(0))
+            {
+                var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var x = (int) ((mousePos.x + (width*scale)/2) / scale);
+                var y = (int) ((mousePos.y + (height*scale)/2) / scale);
+                x = Mathf.Clamp(x, 0, width - 1);
+                y = Mathf.Clamp(y, 0, height - 1);
+                _cellularGrid[x, y] = PixelTypes[1];
+            }  
+        }
+
 
         private void OnDrawGizmos()
         {

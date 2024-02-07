@@ -582,7 +582,7 @@ MonoBehaviour:
   scale: 0.0625
   PixelTypes:
   - isSand: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 0, g: 0, b: 0, a: 1}
   - isSand: 1
     color: {r: 1, g: 0.85638046, b: 0, a: 1}
 --- !u!1660057539 &9223372036854775807
