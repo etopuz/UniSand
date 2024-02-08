@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 1388004125}
   - component: {fileID: 1388004126}
   - component: {fileID: 1388004127}
+  - component: {fileID: 1388004128}
   m_Layer: 0
   m_Name: SandSimulation
   m_TagString: Untagged
@@ -584,6 +585,8 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
   - isSand: 1
     color: {r: 0.9963192, g: 1, b: 0, a: 1}
+  - isSand: 0
+    color: {r: 0, g: 0.87810826, b: 1, a: 1}
 --- !u!212 &1388004127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -636,6 +639,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1388004128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388004124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bab0fc08ea2c1d45b793185e9000a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

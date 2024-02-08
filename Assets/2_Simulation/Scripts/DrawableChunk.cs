@@ -59,7 +59,7 @@ namespace UniSand
 
                 var currentPos = new Vector2Int(x, y);
                 
-                if (_lastPenHoldPosition == Vector2Int.zero)
+                if (_lastPenHoldPosition == Vector2Int.zero || _lastPenHoldPosition == currentPos)
                 {
                     DrawSinglePixel(currentPos);
                 }
@@ -73,8 +73,8 @@ namespace UniSand
                 
                 onDraw?.Invoke(_cellularGrid);
             }
-
-            else
+            
+            else if (Input.GetMouseButtonUp(0))
             {
                 _lastPenHoldPosition = Vector2Int.zero;
             }
@@ -86,9 +86,9 @@ namespace UniSand
 
             Vector2Int currentPosition;
 
-            for (var lerp = 0; lerp <= distance; lerp += 1)
+            for (var move = 0; move <= distance; move += 1)
             {
-                currentPosition = Vector2.Lerp(_lastPenHoldPosition, currentPos, lerp / distance).ToVector2Int();
+                currentPosition = Vector2.Lerp(_lastPenHoldPosition, currentPos, move / distance).ToVector2Int();
                 DrawSinglePixel(currentPosition);
             }
         }
