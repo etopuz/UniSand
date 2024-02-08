@@ -50,6 +50,8 @@ namespace UniSand
             _drawableTexture = _drawableSprite.texture;
             _drawableTexture.Reinitialize(size, size);
             _currentColors = _drawableTexture.GetPixels32();
+            SetCurrentColorsFromGrid();
+            ApplyGridToTexture();
         }
         
         private void SetCurrentColorsFromGrid()
