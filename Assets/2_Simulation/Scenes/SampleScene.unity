@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7374e2d6d728d49983de842582adf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 256
+  size: 64
   pixelTypes:
   - isSand: 0
     color: {r: 0, g: 0, b: 0, a: 1}

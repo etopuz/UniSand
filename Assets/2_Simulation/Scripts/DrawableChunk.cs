@@ -16,8 +16,6 @@ namespace UniSand
     public class DrawableChunk : MonoBehaviour
     {
         [SerializeField] private int size = 16;
-        
-        
         [SerializeField] private Pixel[] pixelTypes; // TODO: needs to be removed on refactoring
         
         // References
@@ -69,14 +67,6 @@ namespace UniSand
         {
             _drawableTexture.SetPixels32(_currentColors);
             _drawableTexture.Apply();
-        }
-
-        [MyBox.ButtonMethod]
-        public void MakeRandomCellSand()
-        {
-            var randomX = UnityEngine.Random.Range(0, size);
-            var randomY = UnityEngine.Random.Range(0, size);
-            _cellularGrid[randomX, randomY] = pixelTypes[1];
         }
 
         private void Update()
