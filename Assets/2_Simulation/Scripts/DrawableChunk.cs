@@ -12,27 +12,23 @@ using UnityEngine;
 
 namespace UniSand
 {
-    [RequireComponent(typeof(SpriteRenderer))]
     public class DrawableChunk : MonoBehaviour
     {
-        [SerializeField] private int size = 16;
+        public int size = 16;
+        public Action<Pixel[,]> onDraw;
+        
         [SerializeField] private Pixel[] pixelTypes; // TODO: needs to be removed on refactoring
         
-        // References
         private Camera _mainCamera;
-        private Sprite _drawableSprite; // TODO: needs to be removed on refactoring
-        private Texture2D _drawableTexture; // TODO: needs to be removed on refactoring
-        
-        // GridData
         private Pixel[,] _cellularGrid;
-        private Color32[] _currentColors;
         private Vector2Int _lastPenHoldPosition = Vector2Int.zero;
-
         private float _cellScale;
 
         private void Start()
         {
             _mainCamera = Camera.main;
+            
+            onDraw?.Invoke(_cellularGrid);
         }
 
         private void Awake()
@@ -47,29 +43,6 @@ namespace UniSand
                     _cellularGrid[x, y] = pixelTypes[0];
                 }
             }
-            _drawableSprite = GetComponent<SpriteRenderer>().sprite;
-            _drawableTexture = _drawableSprite.texture;
-            _drawableTexture.Reinitialize(size, size);
-            _currentColors = _drawableTexture.GetPixels32();
-            SetCurrentColorsFromGrid();
-            ApplyGridToTexture();
-        }
-        
-        private void SetCurrentColorsFromGrid()
-        {
-            for (var x = 0; x < size; x++)
-            {
-                for (var y = 0; y < size; y++)
-                {
-                    _currentColors[x + y * size] = _cellularGrid[x, y].color;
-                }
-            }
-        }
-
-        private void ApplyGridToTexture()
-        {
-            _drawableTexture.SetPixels32(_currentColors);
-            _drawableTexture.Apply();
         }
 
         private void Update()
@@ -98,8 +71,7 @@ namespace UniSand
                 
                 _lastPenHoldPosition = new Vector2Int(x, y);
                 
-                SetCurrentColorsFromGrid();
-                ApplyGridToTexture();
+                onDraw?.Invoke(_cellularGrid);
             }
 
             else
@@ -110,13 +82,11 @@ namespace UniSand
 
         private void DrawLerpLine(Vector2Int currentPos)
         {
-            float distance = Vector2Int.Distance(_lastPenHoldPosition, currentPos);
+            var distance = Vector2Int.Distance(_lastPenHoldPosition, currentPos);
 
-            var currentPosition = _lastPenHoldPosition;
+            Vector2Int currentPosition;
 
-            // Calculate how many times we should interpolate between start_point and end_point based on the amount of time that has passed since the last update
-
-            for (int lerp = 0; lerp <= distance; lerp += 1)
+            for (var lerp = 0; lerp <= distance; lerp += 1)
             {
                 currentPosition = Vector2.Lerp(_lastPenHoldPosition, currentPos, lerp / distance).ToVector2Int();
                 DrawSinglePixel(currentPosition);
