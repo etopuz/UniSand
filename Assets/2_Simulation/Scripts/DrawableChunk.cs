@@ -47,6 +47,15 @@ namespace UniSand
 
         private void Update()
         {
+
+            DrawOnInput();
+
+        }
+
+        // TODO: Move this method to a separate class(like pen class xD)
+        private void DrawOnInput()
+        {
+                        
             var mouseHeldDown = Input.GetMouseButton(0);
             
             if (mouseHeldDown)
@@ -97,6 +106,12 @@ namespace UniSand
         {
             _cellularGrid[currentPos.x, currentPos.y] = pixelTypes[1];
         }
+        
+        private void MovePixel(Vector2Int from, Vector2Int to)
+        {
+            _cellularGrid[to.x, to.y] = _cellularGrid[from.x, from.y];
+            _cellularGrid[from.x, from.y] = pixelTypes[0];
+        }
     }
 }
 
@@ -104,6 +119,7 @@ namespace UniSand
 // TODO: needs to be removed on refactoring
 public struct Pixel
 {
+    public bool isEmpty;
     public bool isSand;
     public Color color;
 }
