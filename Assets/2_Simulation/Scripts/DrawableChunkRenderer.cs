@@ -22,6 +22,8 @@ namespace UniSand
             _drawableTexture.Reinitialize(Size, Size);
             _currentColors = _drawableTexture.GetPixels32();
         }
+        
+        
 
         private void OnEnable()
         {

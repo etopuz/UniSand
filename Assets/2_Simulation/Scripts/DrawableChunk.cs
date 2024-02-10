@@ -60,8 +60,15 @@ namespace UniSand
                 {
                     if (_cellularGrid[x,y].isSand)
                     {
-                        var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownLeft, 3);
-                        
+                        var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.Down, 3);
+                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) == 0)
+                        {
+                            targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownLeft, 3);
+                        }
+                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) == 0)
+                        {
+                            targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownRight, 3);
+                        }
                         if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
                         {
                             MovePixel(new Vector2Int(x, y), targetIndex);

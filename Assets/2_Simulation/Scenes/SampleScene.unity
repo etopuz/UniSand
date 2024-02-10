@@ -181,11 +181,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.59
+  orthographic size: 0.53
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -543,12 +543,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1388004125}
   - component: {fileID: 1388004126}
-  - component: {fileID: 1388004127}
   - component: {fileID: 1388004128}
+  - component: {fileID: 1388004127}
   m_Layer: 0
   m_Name: SandSimulation
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
