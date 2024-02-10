@@ -581,14 +581,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 64
   pixelTypes:
-  - isSand: 0
-    isEmpty: 1
+  - isEmpty: 1
+    isSand: 0
     color: {r: 0, g: 0, b: 0, a: 1}
-  - isSand: 1
-    isEmpty: 0
+  - isEmpty: 0
+    isSand: 1
     color: {r: 0.9963192, g: 1, b: 0, a: 1}
-  - isSand: 0
-    isEmpty: 0
+  - isEmpty: 0
+    isSand: 0
     color: {r: 0, g: 0.87810826, b: 1, a: 1}
 --- !u!212 &1388004127
 SpriteRenderer:

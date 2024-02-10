@@ -1,5 +1,6 @@
 using System;
 using MyBox;
+using UniSand.Utils;
 using UnityEngine;
 
 // TODO: Separate Rendering And Cell System
@@ -47,9 +48,33 @@ namespace UniSand
 
         private void Update()
         {
-
             DrawOnInput();
+        }
 
+        private void LateUpdate()
+        {
+            var isAnythingChanged = false;
+            for (var x = 0; x < size; x++)
+            {
+                for (var y = 0; y < size; y++)
+                {
+                    if (_cellularGrid[x,y].isSand)
+                    {
+                        var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownLeft, 3);
+                        
+                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
+                        {
+                            MovePixel(new Vector2Int(x, y), targetIndex);
+                            isAnythingChanged = true;
+                        }
+                    }
+                }
+            }
+
+            if (isAnythingChanged)
+            {
+                onDraw?.Invoke(_cellularGrid);
+            }
         }
 
         // TODO: Move this method to a separate class(like pen class xD)
