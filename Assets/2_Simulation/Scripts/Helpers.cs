@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UniSand.Utils
 {
-    public class Helpers
+    public static class Helpers
     {
         public static Vector2Int GetFurthestEmptyPixelIndex(Pixel[,] grid, Vector2Int from, Vector2Int direction, int step)
         {

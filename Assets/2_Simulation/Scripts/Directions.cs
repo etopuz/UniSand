@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UniSand.Utils
 {
-    public class Directions
+    public static class Directions
     {
         public static readonly Vector2Int Up = new Vector2Int(0, 1);
         public static readonly Vector2Int Down = new Vector2Int(0, -1);
