@@ -169,8 +169,7 @@ public struct Pixel
     
     public void VariantColor()
     {
-        float h, s, v;
-        Color.RGBToHSV(color, out h, out s, out v);
+        Color.RGBToHSV(color, out var h, out var s, out var v);
         
         s = Mathf.Clamp01(s + Random.Range(-SaturationVariation, SaturationVariation));
         v = Mathf.Clamp01(v + Random.Range(-ValueVariation, ValueVariation));
