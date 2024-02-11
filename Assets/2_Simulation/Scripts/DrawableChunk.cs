@@ -2,6 +2,7 @@ using System;
 using MyBox;
 using UniSand.Utils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // TODO: Separate Rendering And Cell System
 // TODO: Create Cellular Automata Logic For Simulation
@@ -137,6 +138,7 @@ namespace UniSand
         private void DrawSinglePixel(Vector2Int currentPos)
         {
             _cellularGrid[currentPos.x, currentPos.y] = pixelTypes[1];
+            _cellularGrid[currentPos.x, currentPos.y].VariantColor();
         }
         
         private void MovePixel(Vector2Int from, Vector2Int to)
@@ -154,4 +156,24 @@ public struct Pixel
     public bool isEmpty;
     public bool isSand;
     public Color color;
+    
+    public const float SaturationVariation = 0.1f; // Intensity of saturation variation
+    public const float ValueVariation = 0.1f; 
+    
+    public Pixel(bool isEmpty, bool isSand, Color color)
+    {
+        this.isEmpty = isEmpty;
+        this.isSand = isSand;
+        this.color = color;
+    }
+    
+    public void VariantColor()
+    {
+        float h, s, v;
+        Color.RGBToHSV(color, out h, out s, out v);
+        
+        s = Mathf.Clamp01(s + Random.Range(-SaturationVariation, SaturationVariation));
+        v = Mathf.Clamp01(v + Random.Range(-ValueVariation, ValueVariation));
+        color=Color.HSVToRGB(h, s, v);
+    }
 }

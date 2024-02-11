@@ -586,7 +586,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
   - isEmpty: 0
     isSand: 1
-    color: {r: 0.9963192, g: 1, b: 0, a: 1}
+    color: {r: 0.801, g: 0.7314292, b: 0.16740899, a: 1}
   - isEmpty: 0
     isSand: 0
     color: {r: 0, g: 0.87810826, b: 1, a: 1}
