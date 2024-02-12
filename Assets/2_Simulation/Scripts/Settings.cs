@@ -7,7 +7,7 @@ public class Settings : Singleton<Settings>
     
     [Header("Simulation")]
     public int step = 3;
-    public float simulationSpeed;
+    public int frameSkip = 3;
     public int chunkSize = 64;
     
     [Header("Rendering")]

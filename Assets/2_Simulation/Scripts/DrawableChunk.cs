@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using MyBox;
 using UniSand.Utils;
 using UnityEngine;
@@ -27,8 +28,8 @@ namespace UniSand
         private void Start()
         {
             _mainCamera = Camera.main;
-            
             onDraw?.Invoke(_cellularGrid);
+            StartCoroutine(UpdateAfterFrameSkip());
         }
 
         private void Awake()
@@ -50,11 +51,19 @@ namespace UniSand
         {
             DrawOnInput();
         }
+        
+        private IEnumerator UpdateAfterFrameSkip()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(_settings.frameSkip * Time.deltaTime);
+                UpdateGrid();
+            }
+        }
 
-        private void LateUpdate()
+        private void UpdateGrid()
         {
             var isAnythingChanged = false;
-            
             
             for (var x = 0; x < Size; x++)
             {
