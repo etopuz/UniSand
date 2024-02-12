@@ -16,17 +16,14 @@ namespace UniSand
 {
     public class DrawableChunk : MonoBehaviour
     {
-        public int size = 16;
         public Action<Pixel[,]> onDraw;
-        
-        [SerializeField] private Pixel[] pixelTypes; // TODO: needs to be removed on refactoring
-        [SerializeField] private int step = 3; // TODO: needs to be removed on refactoring
         
         private Camera _mainCamera;
         private Pixel[,] _cellularGrid;
         private Vector2Int _lastPenHoldPosition = Vector2Int.zero;
         private float _cellScale;
-
+        private Settings _settings;
+        private int Size => _settings.chunkSize;
         private void Start()
         {
             _mainCamera = Camera.main;
@@ -36,14 +33,15 @@ namespace UniSand
 
         private void Awake()
         {
-            _cellularGrid = new Pixel[size, size];
-            _cellScale = 1f / size;
+            _settings = Settings.Instance;
+            _cellularGrid = new Pixel[Size, Size];
+            _cellScale = 1f / Size;
             
-            for (var x = 0; x < size; x++)
+            for (var x = 0; x < Size; x++)
             {
-                for (var y = 0; y < size; y++)
+                for (var y = 0; y < Size; y++)
                 {
-                    _cellularGrid[x, y] = pixelTypes[0];
+                    _cellularGrid[x, y] = _settings.pixelTypes[0];
                 }
             }
         }
@@ -58,16 +56,16 @@ namespace UniSand
             var isAnythingChanged = false;
             
             
-            for (var x = 0; x < size; x++)
+            for (var x = 0; x < Size; x++)
             {
-                for (var y = 0; y < size; y++)
+                for (var y = 0; y < Size; y++)
                 {
                     if (_cellularGrid[x,y].isSand)
                     {
                         foreach (var directionEnum in _cellularGrid[x,y].movementBehaviour)
                         {
                             var direction = Directions.GetDirectionVector2Int(directionEnum);
-                            var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), direction, step);
+                            var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), direction, _settings.step);
                             if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
                             {
                                 MovePixel(new Vector2Int(x, y), targetIndex);
@@ -96,8 +94,8 @@ namespace UniSand
                 var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 var x = (int) ((mousePos.x + 0.5f) / _cellScale);
                 var y = (int) ((mousePos.y + 0.5f) / _cellScale);
-                x = Mathf.Clamp(x, 0, size - 1);
-                y = Mathf.Clamp(y, 0, size - 1);
+                x = Mathf.Clamp(x, 0, Size - 1);
+                y = Mathf.Clamp(y, 0, Size - 1);
 
                 var currentPos = new Vector2Int(x, y);
                 
@@ -137,14 +135,14 @@ namespace UniSand
 
         private void DrawSinglePixel(Vector2Int currentPos)
         {
-            _cellularGrid[currentPos.x, currentPos.y] = pixelTypes[1];
+            _cellularGrid[currentPos.x, currentPos.y] = _settings.pixelTypes[1];
             _cellularGrid[currentPos.x, currentPos.y].VariantColor();
         }
         
         private void MovePixel(Vector2Int from, Vector2Int to)
         {
             _cellularGrid[to.x, to.y] = _cellularGrid[from.x, from.y];
-            _cellularGrid[from.x, from.y] = pixelTypes[0];
+            _cellularGrid[from.x, from.y] = _settings.pixelTypes[0];
         }
     }
 }

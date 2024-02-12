@@ -12,7 +12,7 @@ namespace UniSand
         private Texture2D _drawableTexture;
         private Color32[] _currentColors;
         private DrawableChunk _drawableChunk;
-        private int Size => _drawableChunk.size;
+        private int Size => Settings.Instance.chunkSize;
 
         private void Awake()
         {

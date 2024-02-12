@@ -10,19 +10,15 @@ public struct Pixel
     public bool isEmpty;
     public bool isSand;
     public Color color;
-    
-    public const float SaturationVariation = 0.1f; // Intensity of saturation variation
-    public const float ValueVariation = 0.1f;
 
     public List<Direction> movementBehaviour;
-    
     
     public void VariantColor()
     {
         Color.RGBToHSV(color, out var h, out var s, out var v);
         
-        s = Mathf.Clamp01(s + Random.Range(-SaturationVariation, SaturationVariation));
-        v = Mathf.Clamp01(v + Random.Range(-ValueVariation, ValueVariation));
+        s = Mathf.Clamp01(s + Random.Range(-Settings.Instance.saturationVariation, Settings.Instance.saturationVariation));
+        v = Mathf.Clamp01(v + Random.Range(-Settings.Instance.valueVariation, Settings.Instance.valueVariation));
         color=Color.HSVToRGB(h, s, v);
     }
 }
