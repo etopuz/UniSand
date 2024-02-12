@@ -65,9 +65,9 @@ namespace UniSand
         {
             var isAnythingChanged = false;
             
-            for (var x = 0; x < Size; x++)
+            for (var y = 0; y < Size; y++)
             {
-                for (var y = 0; y < Size; y++)
+                for (var x = 0; x < Size; x++)
                 {
                     if (_cellularGrid[x,y].isSand)
                     {

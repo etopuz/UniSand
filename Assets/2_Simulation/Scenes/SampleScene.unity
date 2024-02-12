@@ -318,7 +318,7 @@ MonoBehaviour:
     color: {r: 0, g: 0.6361364, b: 0.7830189, a: 1}
     movementBehaviour: 
   step: 3
-  simulationSpeed: 0
+  frameSkip: 6
   chunkSize: 64
   saturationVariation: 0.1
   valueVariation: 0.1
