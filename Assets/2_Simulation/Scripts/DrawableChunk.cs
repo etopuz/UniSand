@@ -43,6 +43,7 @@ namespace UniSand
                 for (var y = 0; y < Size; y++)
                 {
                     _cellularGrid[x, y] = _settings.pixelTypes[0];
+                    _cellularGrid[x, y].isMovedOnce = false;
                 }
             }
         }
@@ -65,11 +66,11 @@ namespace UniSand
         {
             var isAnythingChanged = false;
             
-            for (var y = 0; y < Size; y++)
+            for (var x = 0; x < Size; x++)
             {
-                for (var x = 0; x < Size; x++)
+                for (var y = 0; y < Size; y++)
                 {
-                    if (_cellularGrid[x,y].isSand)
+                    if (_cellularGrid[x,y].isSand && !_cellularGrid[x,y].isMovedOnce)
                     {
                         foreach (var directionEnum in _cellularGrid[x,y].movementBehaviour)
                         {
@@ -84,11 +85,25 @@ namespace UniSand
                         }
                     }
                 }
-            }
 
+            }
+            
             if (isAnythingChanged)
             {
                 onDraw?.Invoke(_cellularGrid);
+                ClearMovedOnce();
+            }
+
+        }
+
+        private void ClearMovedOnce()
+        {
+            for (var x = 0; x < Size; x++)
+            {
+                for (var y = 0; y < Size; y++)
+                {
+                    _cellularGrid[x, y].isMovedOnce = false;
+                }
             }
         }
 
@@ -151,6 +166,7 @@ namespace UniSand
         private void MovePixel(Vector2Int from, Vector2Int to)
         {
             _cellularGrid[to.x, to.y] = _cellularGrid[from.x, from.y];
+            _cellularGrid[to.x, to.y].isMovedOnce = true;
             _cellularGrid[from.x, from.y] = _settings.pixelTypes[0];
         }
     }

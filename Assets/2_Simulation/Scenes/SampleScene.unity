@@ -309,15 +309,18 @@ MonoBehaviour:
     isSand: 0
     color: {r: 0, g: 0, b: 0, a: 1}
     movementBehaviour: 
+    isMovedOnce: 0
   - isEmpty: 0
     isSand: 1
     color: {r: 0.8588236, g: 0.77647066, b: 0.53333336, a: 1}
-    movementBehaviour: 010000000600000007000000
+    movementBehaviour: 000000000400000005000000
+    isMovedOnce: 0
   - isEmpty: 0
     isSand: 0
     color: {r: 0, g: 0.6361364, b: 0.7830189, a: 1}
     movementBehaviour: 
-  step: 3
+    isMovedOnce: 0
+  step: 1
   frameSkip: 6
   chunkSize: 64
   saturationVariation: 0.1

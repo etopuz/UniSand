@@ -12,6 +12,7 @@ public struct Pixel
     public Color color;
 
     public List<Direction> movementBehaviour;
+    public bool isMovedOnce;
     
     public void VariantColor()
     {
