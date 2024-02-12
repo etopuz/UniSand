@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UniSand.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,7 +14,7 @@ public struct Pixel
     public const float SaturationVariation = 0.1f; // Intensity of saturation variation
     public const float ValueVariation = 0.1f;
 
-    public List<Vector2Int> movementBehaviour;
+    public List<Direction> movementBehaviour;
     
     
     public void VariantColor()

@@ -584,15 +584,15 @@ MonoBehaviour:
   - isEmpty: 1
     isSand: 0
     color: {r: 0, g: 0, b: 0, a: 1}
-    movementBehaviour: []
+    movementBehaviour: 
   - isEmpty: 0
     isSand: 1
     color: {r: 0.7725491, g: 0.69411767, b: 0.46274513, a: 1}
-    movementBehaviour: []
+    movementBehaviour: 010000000600000007000000
   - isEmpty: 0
     isSand: 0
     color: {r: 0, g: 0.87810826, b: 1, a: 1}
-    movementBehaviour: []
+    movementBehaviour: 
 --- !u!212 &1388004127
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ namespace UniSand
         public Action<Pixel[,]> onDraw;
         
         [SerializeField] private Pixel[] pixelTypes; // TODO: needs to be removed on refactoring
+        [SerializeField] private int step = 3; // TODO: needs to be removed on refactoring
         
         private Camera _mainCamera;
         private Pixel[,] _cellularGrid;
@@ -55,25 +56,24 @@ namespace UniSand
         private void LateUpdate()
         {
             var isAnythingChanged = false;
+            
+            
             for (var x = 0; x < size; x++)
             {
                 for (var y = 0; y < size; y++)
                 {
                     if (_cellularGrid[x,y].isSand)
                     {
-                        var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.Down, 3);
-                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) == 0)
+                        foreach (var directionEnum in _cellularGrid[x,y].movementBehaviour)
                         {
-                            targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownLeft, 3);
-                        }
-                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) == 0)
-                        {
-                            targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), Directions.DownRight, 3);
-                        }
-                        if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
-                        {
-                            MovePixel(new Vector2Int(x, y), targetIndex);
-                            isAnythingChanged = true;
+                            var direction = Directions.GetDirectionVector2Int(directionEnum);
+                            var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), direction, step);
+                            if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
+                            {
+                                MovePixel(new Vector2Int(x, y), targetIndex);
+                                isAnythingChanged = true;
+                                break;
+                            }                            
                         }
                     }
                 }

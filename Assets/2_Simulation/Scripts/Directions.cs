@@ -32,6 +32,34 @@ namespace UniSand.Utils
             return All[Random.Range(4, 8)];
         }
         
+        public static Vector2Int GetDirectionVector2Int(Direction direction)
+        {
+            return direction switch
+            {
+                Direction.Up => Up,
+                Direction.Down => Down,
+                Direction.Left => Left,
+                Direction.Right => Right,
+                Direction.UpLeft => UpLeft,
+                Direction.UpRight => UpRight,
+                Direction.DownLeft => DownLeft,
+                Direction.DownRight => DownRight,
+                _ => Vector2Int.zero
+            };
+        }
+        
 
+    }
+    
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right,
+        UpLeft,
+        UpRight,
+        DownLeft,
+        DownRight
     }
 }
