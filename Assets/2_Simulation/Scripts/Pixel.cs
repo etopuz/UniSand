@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,14 +11,10 @@ public struct Pixel
     public Color color;
     
     public const float SaturationVariation = 0.1f; // Intensity of saturation variation
-    public const float ValueVariation = 0.1f; 
+    public const float ValueVariation = 0.1f;
+
+    public List<Vector2Int> movementBehaviour;
     
-    public Pixel(bool isEmpty, bool isSand, Color color)
-    {
-        this.isEmpty = isEmpty;
-        this.isSand = isSand;
-        this.color = color;
-    }
     
     public void VariantColor()
     {
