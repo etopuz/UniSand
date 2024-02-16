@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace UniSand
 {
-    [CreateAssetMenu(fileName = "Pixel", menuName = "UniSand/Pixel", order = 0)]
+    [CreateAssetMenu(fileName = nameof(Pixel), menuName = Settings.MenuName+nameof(Pixel), order = 0)]
     public class Pixel : ScriptableObject
     {
         public bool isEmpty;

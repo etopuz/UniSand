@@ -5,6 +5,8 @@ namespace UniSand
 {
     public class Settings : Singleton<Settings>
     {
+        public const string MenuName = "UniSand/";
+        
         public Pixel[] pixelTypes;
         
         [Header("Simulation")]
