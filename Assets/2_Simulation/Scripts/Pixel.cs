@@ -12,11 +12,17 @@ namespace UniSand
         public bool isEmpty;
         public bool isSand;
         public Color color;
+        public bool canCreateVariantColor;
 
         public List<Direction> movementBehaviour;
 
-        public Color VariantColor()
+        public Color GetDrawColor()
         {
+            if (!canCreateVariantColor)
+            {
+                return color;
+            }
+            
             Color.RGBToHSV(color, out var h, out var s, out var v);
 
             s = Mathf.Clamp01(s + Random.Range(-Settings.Instance.saturationVariation,

@@ -12,7 +12,7 @@ namespace UniSand
 
         public Node(Pixel pixelData, bool isMovedOnce)
         {
-            this.variantColor = pixelData.VariantColor();
+            this.variantColor = pixelData.GetDrawColor();
             this.pixelData = pixelData;
             this.isMovedOnce = isMovedOnce;
         }
