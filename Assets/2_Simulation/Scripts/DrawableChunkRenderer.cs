@@ -35,13 +35,13 @@ namespace UniSand
             _drawableChunk.onDraw -= Draw;
         }
 
-        private void Draw(Pixel[,] pixelGrid)
+        private void Draw(Node[,] pixelGrid)
         {
             for (var x = 0; x < Size; x++)
             {
                 for (var y = 0; y < Size; y++)
                 {
-                    _currentColors[x + y * Size] = pixelGrid[x, y].color;
+                    _currentColors[x + y * Size] = pixelGrid[x, y].variantColor;
                 }
             }
 

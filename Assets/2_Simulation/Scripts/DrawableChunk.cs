@@ -16,10 +16,10 @@ namespace UniSand
 {
     public class DrawableChunk : MonoBehaviour
     {
-        public Action<Pixel[,]> onDraw;
+        public Action<Node[,]> onDraw;
         
         private Camera _mainCamera;
-        private Pixel[,] _cellularGrid;
+        private Node[,] _cellularGrid;
         private Vector2Int _lastPenHoldPosition = Vector2Int.zero;
         private float _cellScale;
         private Settings _settings;
@@ -34,15 +34,14 @@ namespace UniSand
         private void Awake()
         {
             _settings = Settings.Instance;
-            _cellularGrid = new Pixel[Size, Size];
+            _cellularGrid = new Node[Size, Size];
             _cellScale = 1f / Size;
             
             for (var x = 0; x < Size; x++)
             {
                 for (var y = 0; y < Size; y++)
                 {
-                    _cellularGrid[x, y] = _settings.pixelTypes[0];
-                    _cellularGrid[x, y].isMovedOnce = false;
+                    _cellularGrid[x, y] = new Node(_settings.pixelTypes[0], false);
                 }
             }
         }
@@ -69,9 +68,9 @@ namespace UniSand
             {
                 for (var y = 0; y < Size; y++)
                 {
-                    if (_cellularGrid[x,y].isSand && !_cellularGrid[x,y].isMovedOnce)
+                    if (_cellularGrid[x,y].pixelData.isSand && !_cellularGrid[x,y].isMovedOnce)
                     {
-                        foreach (var directionEnum in _cellularGrid[x,y].movementBehaviour)
+                        foreach (var directionEnum in _cellularGrid[x,y].pixelData.movementBehaviour)
                         {
                             var direction = Directions.GetDirectionVector2Int(directionEnum);
                             var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), direction, _settings.step);
@@ -158,15 +157,17 @@ namespace UniSand
 
         private void DrawSinglePixel(Vector2Int currentPos)
         {
-            _cellularGrid[currentPos.x, currentPos.y] = _settings.pixelTypes[1];
-            _cellularGrid[currentPos.x, currentPos.y].VariantColor();
+            _cellularGrid[currentPos.x, currentPos.y] = new Node(_settings.pixelTypes[1], false);
+            //_cellularGrid[currentPos.x, currentPos.y].VariantColor();
         }
         
         private void MovePixel(Vector2Int from, Vector2Int to)
         {
             _cellularGrid[to.x, to.y] = _cellularGrid[from.x, from.y];
             _cellularGrid[to.x, to.y].isMovedOnce = true;
-            _cellularGrid[from.x, from.y] = _settings.pixelTypes[0];
+            _cellularGrid[from.x, from.y] = new Node(_settings.pixelTypes[0], false);
         }
     }
 }
+
+

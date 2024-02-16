@@ -305,21 +305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelTypes:
-  - isEmpty: 1
-    isSand: 0
-    color: {r: 0, g: 0, b: 0, a: 1}
-    movementBehaviour: 
-    isMovedOnce: 0
-  - isEmpty: 0
-    isSand: 1
-    color: {r: 0.8588236, g: 0.77647066, b: 0.53333336, a: 1}
-    movementBehaviour: 000000000400000005000000
-    isMovedOnce: 0
-  - isEmpty: 0
-    isSand: 0
-    color: {r: 0, g: 0.6361364, b: 0.7830189, a: 1}
-    movementBehaviour: 
-    isMovedOnce: 0
+  - {fileID: 11400000, guid: 7ac7bafaaf6b8a54285209119e232769, type: 2}
+  - {fileID: 11400000, guid: e4196339bfc62e54fbfc5f3004ad3651, type: 2}
+  - {fileID: 11400000, guid: 9ff242d4e26d7c448a7f50984d7042d5, type: 2}
   step: 1
   frameSkip: 6
   chunkSize: 64
