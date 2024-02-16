@@ -4,7 +4,6 @@ using MyBox;
 using UniSand.Utils;
 using UnityEngine;
 
-// TODO: Add velocity and acceleration support for pixels
 // TODO: Add density support for pixels
 // TODO: Create Cellular Automata Logic For Simulation
 // TODO: Add more detailed classes for Pixel(like Sand, Water, etc.) and Pens(like Brush, Eraser, etc., they may have size). And separate them from DrawableChunk

@@ -4,22 +4,26 @@ using UniSand.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public struct Pixel
+namespace UniSand
 {
-    public bool isEmpty;
-    public bool isSand;
-    public Color color;
-
-    public List<Direction> movementBehaviour;
-    public bool isMovedOnce;
-    
-    public void VariantColor()
+    [Serializable]
+    public struct Pixel
     {
-        Color.RGBToHSV(color, out var h, out var s, out var v);
-        
-        s = Mathf.Clamp01(s + Random.Range(-Settings.Instance.saturationVariation, Settings.Instance.saturationVariation));
-        v = Mathf.Clamp01(v + Random.Range(-Settings.Instance.valueVariation, Settings.Instance.valueVariation));
-        color=Color.HSVToRGB(h, s, v);
+        public bool isEmpty;
+        public bool isSand;
+        public Color color;
+
+        public List<Direction> movementBehaviour;
+        public bool isMovedOnce;
+
+        public void VariantColor()
+        {
+            Color.RGBToHSV(color, out var h, out var s, out var v);
+
+            s = Mathf.Clamp01(s + Random.Range(-Settings.Instance.saturationVariation,
+                Settings.Instance.saturationVariation));
+            v = Mathf.Clamp01(v + Random.Range(-Settings.Instance.valueVariation, Settings.Instance.valueVariation));
+            color = Color.HSVToRGB(h, s, v);
+        }
     }
 }
