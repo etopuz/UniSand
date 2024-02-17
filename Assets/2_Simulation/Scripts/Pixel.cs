@@ -9,8 +9,6 @@ namespace UniSand
     [CreateAssetMenu(fileName = nameof(Pixel), menuName = Settings.MenuName+nameof(Pixel), order = 0)]
     public class Pixel : ScriptableObject
     {
-        public bool isEmpty;
-        public bool isSand;
         public float density;
         public Color color;
         public bool canCreateVariantColor;

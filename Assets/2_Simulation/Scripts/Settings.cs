@@ -8,6 +8,7 @@ namespace UniSand
         public const string MenuName = "UniSand/";
         
         public Pixel[] pixelTypes;
+        public Pixel emptyPixel;
         
         [Header("Simulation")]
         public int step = 3;

@@ -305,9 +305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelTypes:
-  - {fileID: 11400000, guid: 7ac7bafaaf6b8a54285209119e232769, type: 2}
   - {fileID: 11400000, guid: e4196339bfc62e54fbfc5f3004ad3651, type: 2}
   - {fileID: 11400000, guid: 9ff242d4e26d7c448a7f50984d7042d5, type: 2}
+  emptyPixel: {fileID: 11400000, guid: 7ac7bafaaf6b8a54285209119e232769, type: 2}
   step: 1
   frameSkip: 6
   chunkSize: 64

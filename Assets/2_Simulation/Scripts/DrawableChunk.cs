@@ -41,7 +41,7 @@ namespace UniSand
             {
                 for (var y = 0; y < Size; y++)
                 {
-                    _cellularGrid[x, y] = new Node(_settings.pixelTypes[0], false);
+                    _cellularGrid[x, y] = new Node(_settings.emptyPixel, false);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace UniSand
             {
                 for (var y = 0; y < Size; y++)
                 {
-                    if (_cellularGrid[x,y].pixelData.isSand && !_cellularGrid[x,y].isMovedOnce)
+                    if (_cellularGrid[x,y].pixelData.density!=0 && !_cellularGrid[x,y].isMovedOnce)
                     {
                         foreach (var directionEnum in _cellularGrid[x,y].pixelData.movementBehaviour)
                         {
@@ -123,12 +123,12 @@ namespace UniSand
                 
                 if (_lastPenHoldPosition == Vector2Int.zero || _lastPenHoldPosition == currentPos)
                 {
-                    DrawSinglePixel(currentPos);
+                    DrawSinglePixel(currentPos, _settings.pixelTypes[0]); // TODO remove hardcoded pixel type
                 }
 
                 else
                 {
-                    DrawLerpLine(currentPos);
+                    DrawLerpLine(currentPos, _settings.pixelTypes[0]); // TODO remove hardcoded pixel type
                 }
                 
                 _lastPenHoldPosition = new Vector2Int(x, y);
@@ -142,7 +142,7 @@ namespace UniSand
             }
         }
 
-        private void DrawLerpLine(Vector2Int currentPos)
+        private void DrawLerpLine(Vector2Int currentPos, Pixel pixel)
         {
             var distance = Vector2Int.Distance(_lastPenHoldPosition, currentPos);
 
@@ -151,21 +151,19 @@ namespace UniSand
             for (var move = 0; move <= distance; move += 1)
             {
                 currentPosition = Vector2.Lerp(_lastPenHoldPosition, currentPos, move / distance).ToVector2Int();
-                DrawSinglePixel(currentPosition);
+                DrawSinglePixel(currentPosition, pixel);
             }
         }
 
-        private void DrawSinglePixel(Vector2Int currentPos)
+        private void DrawSinglePixel(Vector2Int currentPos, Pixel pixel)
         {
-            _cellularGrid[currentPos.x, currentPos.y] = new Node(_settings.pixelTypes[1], false);
-            //_cellularGrid[currentPos.x, currentPos.y].VariantColor();
+            _cellularGrid[currentPos.x, currentPos.y] = new Node(pixel, false);
         }
         
         private void MovePixel(Vector2Int from, Vector2Int to)
         {
-            _cellularGrid[to.x, to.y] = _cellularGrid[from.x, from.y];
+            (_cellularGrid[to.x, to.y], _cellularGrid[from.x, from.y])  = (_cellularGrid[from.x, from.y], _cellularGrid[to.x, to.y]);
             _cellularGrid[to.x, to.y].isMovedOnce = true;
-            _cellularGrid[from.x, from.y] = new Node(_settings.pixelTypes[0], false);
         }
     }
 }
