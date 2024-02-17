@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEmpty: 0
   isSand: 1
+  density: 1
   color: {r: 0, g: 0.86945295, b: 1, a: 1}
   canCreateVariantColor: 1
   movementBehaviour: 010000000200000003000000

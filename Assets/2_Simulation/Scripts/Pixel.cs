@@ -11,6 +11,7 @@ namespace UniSand
     {
         public bool isEmpty;
         public bool isSand;
+        public float density;
         public Color color;
         public bool canCreateVariantColor;
 
