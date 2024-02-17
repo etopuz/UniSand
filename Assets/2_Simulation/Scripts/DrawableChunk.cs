@@ -16,7 +16,8 @@ namespace UniSand
 {
     public class DrawableChunk : MonoBehaviour
     {
-        public Action<Node[,]> onDraw;
+        public Action<Node[,]> onDraw; // TODO : maybe use Color32[,] instead of Node[,]
+                                       // ?? Which one is better for performance? Or is it really matter
         
         private Camera _mainCamera;
         private Node[,] _cellularGrid;
