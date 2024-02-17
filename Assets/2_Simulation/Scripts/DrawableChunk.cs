@@ -73,7 +73,7 @@ namespace UniSand
                         foreach (var directionEnum in _cellularGrid[x,y].pixelData.movementBehaviour)
                         {
                             var direction = Directions.GetDirectionVector2Int(directionEnum);
-                            var targetIndex = Helpers.GetFurthestEmptyPixelIndex(_cellularGrid, new Vector2Int(x, y), direction, _settings.step);
+                            var targetIndex = Helpers.GetFurthestPossiblePixelIndex(_cellularGrid, new Vector2Int(x, y), direction, _settings.step);
                             if (Vector2Int.Distance(targetIndex, new Vector2Int(x, y)) > 0)
                             {
                                 MovePixel(new Vector2Int(x, y), targetIndex);
