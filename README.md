@@ -17,7 +17,6 @@ Unity 2022.3.15f1
 ### Todo
 
 - [X] Add density support for pixels
-- [ ] Create Cellular Automata Logic For Simulation
 - [ ] Add more detailed classes for Pixel(like Sand, Water, etc.) and Pens(like Brush, Eraser, etc., they may have size). And separate them from DrawableChunk
 - [ ] Add UI buttons for drawing on canvas (choose pixels, pens, or other functional things such as simulation start, pause, etc.)
 - [ ] Add pause and resume support for simulation
