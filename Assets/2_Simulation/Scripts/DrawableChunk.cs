@@ -4,13 +4,7 @@ using MyBox;
 using UniSand.Utils;
 using UnityEngine;
 
-// TODO: Add density support for pixels
-// TODO: Create Cellular Automata Logic For Simulation
-// TODO: Add more detailed classes for Pixel(like Sand, Water, etc.) and Pens(like Brush, Eraser, etc., they may have size). And separate them from DrawableChunk
-// TODO: Add UI buttons for drawing on canvas (choose pixels, pens, or other functional things such as simulation start, pause, etc.)
-// TODO: Add pause and resume support for simulation
-// TODO: Add multiple chunk support for bigger simulations
-// TODO: Add multithreading support for multiple chunks
+
 
 namespace UniSand
 {
