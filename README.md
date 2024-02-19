@@ -20,7 +20,7 @@ Unity 2022.3.15f1
 - [ ] Add more detailed classes for Pixel(like Sand, Water, etc.) and Pens(like Brush, Eraser, etc., they may have size). And separate them from DrawableChunk
 - [ ] Add UI buttons for drawing on canvas (choose pixels, pens, or other functional things such as simulation start, pause, etc.)
 - [ ] Add pause and resume support for simulation
-- [ ] Add multiple chunk support for bigger simulations
+- [ ] Add multiple chunk support for bigger simulations(WIP)
 - [ ] Add multithreading support for multiple chunks
 
 
