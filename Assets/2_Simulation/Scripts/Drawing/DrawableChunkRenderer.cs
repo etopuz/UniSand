@@ -8,22 +8,23 @@ namespace UniSand
     [RequireComponent(typeof(SpriteRenderer))]
     public class DrawableChunkRenderer : MonoBehaviour
     {
+        private DrawableChunk _drawableChunk;
+        private SpriteRenderer _spriteRenderer;
         private Sprite _drawableSprite;
         private Texture2D _drawableTexture;
         private Color32[] _currentColors;
-        private DrawableChunk _drawableChunk;
+
         private int Size => Settings.Instance.chunkSize;
 
         private void Awake()
         {
             _drawableChunk = GetComponent<DrawableChunk>();
-            _drawableSprite = GetComponent<SpriteRenderer>().sprite;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _drawableSprite = _spriteRenderer.sprite;
             _drawableTexture = _drawableSprite.texture;
             _drawableTexture.Reinitialize(Size, Size);
             _currentColors = _drawableTexture.GetPixels32();
         }
-        
-        
 
         private void OnEnable()
         {

@@ -108,15 +108,20 @@ namespace UniSand
             if (mouseHeldDown)
             {
                 var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                var x = (int) ((mousePos.x + 0.5f) / _cellScale);
-                var y = (int) ((mousePos.y + 0.5f) / _cellScale);
+                var testPos = new Vector3(transform.position.x, transform.position.y, -10);
                 
-                Debug.Log("Mouse Pos: " + mousePos + " x: " + x + " y: " + y);
+                var x = (int) ((mousePos.x - testPos.x + 0.5f) / _cellScale);
+                var y = (int) ((mousePos.y - testPos.y + 0.5f) / _cellScale);
 
-                if (x < 0 || x >= Size || y < 0 || y >= Size)
+                bool isMouseInBounds = Vector3.Distance(mousePos, testPos) < 0.5f;
+                
+                Debug.Log("testPos:" + testPos + "mousePos:" + mousePos + "isMouseInBounds:" + isMouseInBounds + "x: " + x + " y: " +y);
+                
+                if (!isMouseInBounds)
                 {
                     return;
                 }
+                
                 /*x = Mathf.Clamp(x, 0, Size - 1);
                 y = Mathf.Clamp(y, 0, Size - 1);*/
 
