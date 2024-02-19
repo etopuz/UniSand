@@ -115,15 +115,10 @@ namespace UniSand
 
                 bool isMouseInBounds = Vector3.Distance(mousePos, testPos) < 0.5f;
                 
-                Debug.Log("testPos:" + testPos + "mousePos:" + mousePos + "isMouseInBounds:" + isMouseInBounds + "x: " + x + " y: " +y);
-                
                 if (!isMouseInBounds)
                 {
                     return;
                 }
-                
-                /*x = Mathf.Clamp(x, 0, Size - 1);
-                y = Mathf.Clamp(y, 0, Size - 1);*/
 
                 var currentPos = new Vector2Int(x, y);
                 
