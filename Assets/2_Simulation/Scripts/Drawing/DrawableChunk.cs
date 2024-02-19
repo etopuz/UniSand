@@ -103,7 +103,6 @@ namespace UniSand
         // TODO: Move this method to a separate class(like pen class xD)
         private void DrawOnInput()
         {
-                        
             var mouseHeldDown = Input.GetMouseButton(0);
             
             if (mouseHeldDown)
@@ -111,8 +110,15 @@ namespace UniSand
                 var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 var x = (int) ((mousePos.x + 0.5f) / _cellScale);
                 var y = (int) ((mousePos.y + 0.5f) / _cellScale);
-                x = Mathf.Clamp(x, 0, Size - 1);
-                y = Mathf.Clamp(y, 0, Size - 1);
+                
+                Debug.Log("Mouse Pos: " + mousePos + " x: " + x + " y: " + y);
+
+                if (x < 0 || x >= Size || y < 0 || y >= Size)
+                {
+                    return;
+                }
+                /*x = Mathf.Clamp(x, 0, Size - 1);
+                y = Mathf.Clamp(y, 0, Size - 1);*/
 
                 var currentPos = new Vector2Int(x, y);
                 
