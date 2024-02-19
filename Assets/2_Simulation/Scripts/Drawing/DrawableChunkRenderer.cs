@@ -20,6 +20,7 @@ namespace UniSand
         {
             _drawableChunk = GetComponent<DrawableChunk>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.sprite = Sprite.Create(new Texture2D(Size, Size), new Rect(0, 0, Size, Size), Vector2.one * 0.5f, 64);
             _drawableSprite = _spriteRenderer.sprite;
             _drawableTexture = _drawableSprite.texture;
             _drawableTexture.Reinitialize(Size, Size);
