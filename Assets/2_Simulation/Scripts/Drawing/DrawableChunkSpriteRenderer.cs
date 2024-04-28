@@ -6,7 +6,7 @@ namespace UniSand
 {
     [RequireComponent(typeof(DrawableChunk))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class DrawableChunkRenderer : MonoBehaviour
+    public class DrawableChunkSpriteRenderer : MonoBehaviour
     {
         private DrawableChunk _drawableChunk;
         private SpriteRenderer _spriteRenderer;
