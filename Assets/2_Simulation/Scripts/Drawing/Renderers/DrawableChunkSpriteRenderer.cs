@@ -4,19 +4,14 @@ using UnityEngine;
 
 namespace UniSand
 {
-    [RequireComponent(typeof(DrawableChunk))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class DrawableChunkSpriteRenderer : MonoBehaviour
+    public class DrawableChunkSpriteRenderer : DrawableChunkRenderer
     {
-        private DrawableChunk _drawableChunk;
         private SpriteRenderer _spriteRenderer;
         private Sprite _drawableSprite;
         private Texture2D _drawableTexture;
-        private Color32[] _currentColors;
 
-        private int Size => Settings.Instance.chunkSize;
-
-        private void Awake()
+        protected override void Init()
         {
             _drawableChunk = GetComponent<DrawableChunk>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,17 +22,7 @@ namespace UniSand
             _currentColors = _drawableTexture.GetPixels32();
         }
 
-        private void OnEnable()
-        {
-            _drawableChunk.onDraw += Draw;
-        }
-        
-        private void OnDisable()
-        {
-            _drawableChunk.onDraw -= Draw;
-        }
-
-        private void Draw(Node[,] pixelGrid)
+        protected override void Draw(Node[,] pixelGrid)
         {
             for (var x = 0; x < Size; x++)
             {
