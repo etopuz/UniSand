@@ -1,5 +1,5 @@
 # UniSand
-A simple 2D sand simulation with Unity and C#. 
+A simple 2D sand simulation with Unity and C#. (Development is stopped right now.)
 
 ![SandSimulationCapture](SandSimulation.gif)
 
